@@ -55,11 +55,13 @@
 					});
 				}
 			});
-			$(document).on('wheel', function(e)
-			{
-				e = window.event || e;
-				$('#container').scrollLeft -= (Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail))) * 40); // Multiplied by 40
-				e.preventDefault();
+			$("body").bind("DOMMouseScroll mousewheel", function (event) {
+				var oEvent = event.originalEvent, 
+					direction = oEvent.detail ? oEvent.detail * -120 : oEvent.wheelDelta, 
+					position = $(this).scrollLeft();
+				position += direction > 0 ? -120 : 120;
+				$(this).scrollLeft(position);
+				event.preventDefault();
 			});
 		});
 		</script>
