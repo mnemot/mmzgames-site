@@ -28,11 +28,11 @@
 	filter: blur(4px);
 	-webkit-filter: blur(4px);
 }
+.biglogo { transform: scale(3) !important; }
 .hero img.logo {
 	height: 12.5vh;
 	transform: scale(2);
 }
-.logo-big { transform: scale(3) !important; }
 .catalog-title {
 	text-transform: uppercase;
     font-size: 16pt;
