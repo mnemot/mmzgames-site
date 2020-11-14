@@ -1,0 +1,228 @@
+@font-face {
+	font-family: RetroShootype;
+	src: url(typeface.otf);
+}
+@keyframes glow {
+	0%   { filter: hue-rotate(0); }
+	25%  { filter: hue-rotate(90deg); }
+	50%  { filter: hue-rotate(180deg); }
+	75%  { filter: hue-rotate(270deg); }
+	100% { filter: hue-rotate(360deg); }
+}
+@keyframes fadeout {
+	100% { opacity: 0; }
+}
+@keyframes fadein {
+	0% { opacity: 0; }
+	100% { opacity: 1.0; }
+}
+@keyframes subin {
+	0% { opacity: 0; }
+	35% { opacity: 0; }
+	60% { opacity: 1.0; }
+}
+@keyframes hover {
+	0% {
+		transform: scale(1.0);
+		opacity: 0.66;
+	}
+	33% { transform: scale(0.9); }
+	50% { transform: scale(1.1); }
+	100% {
+		transform: scale(1.0);
+		opacity: 1;
+	}
+}
+@keyframes bonkin {
+	0% { opacity: 0; }
+	35% {
+		transform: scale(1.1, 0.7);
+		opacity: 0;
+	}
+	40% { transform: scale(0.8, 1.2); }
+	45% {
+		transform: scale(1.0, 1.0);
+		opacity: 0.75;
+	}
+	100% { opacity: 1.0; }
+}
+html, body {
+	margin: 0;
+	padding: 0;
+	overflow-x: auto;
+	overflow-y: hidden;
+	width: 100vw;
+	height: 100vh;
+	color: $ffffff;
+	font-size: xx-large;
+	z-index: -2;
+	animation: intro 2s;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: RetroShootype;
+	color: #ffffff;
+	filter: drop-shadow(3px 3px 0 #000000);
+	line-height: 50%;
+	margin: 0;
+	padding: 0;
+	display: block;
+	font-weight: normal;
+}
+video {
+	width: 100%;
+	display: block;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	z-index: -1;
+	background-color: #080c18;
+}
+.flex {
+	z-index: 1;
+	min-width: 150vw;
+	height: 100vh;
+	display: flex;
+	flex-direction: row;
+	align-content: center;
+	align-items: center;
+	padding: 0 25vw;
+	animation: fadein 2s;
+}
+.flex > .flexitem, .flex > iframe {
+	filter: drop-shadow(8px 8px 0 #000000);
+	border-radius: 8px;
+	margin: 1em;
+	flex-grow: 1;
+	flex-shrink: 0;
+	text-align: center;
+}
+.flexitem {
+	color: #fff;
+	background-color: #080c18;
+	padding: 1em 2em;
+	max-width: 50vw;
+}
+.flexitem > .logo {
+	min-height: 212px;
+	animation: glow 1s infinite, bonkin 8s;
+}
+.flexitem > p {
+	text-align: justify;
+	font-size: 9pt;
+}
+.title { text-align: left; }
+a.goback {
+	font-family: RetroShootype;
+	color: #808080;
+	font-size: 40pt;
+	line-height: 24px;
+	text-decoration: none;
+	position: fixed;
+	bottom: 1em;
+	right: 1em;
+	opacity: 0;
+	animation: fadeout 1s;
+}
+a.showup {
+	animation: fadein 1s !important;
+	opacity: 1;
+}
+a.showup:hover { color: #fff; }
+#mainmenu {
+	width: calc(50vw - 2em);
+	margin-left: 0;
+	padding: 1em 0;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.85)), url(cover.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+#mainmenu > h3 {
+	animation: subin 12s;
+}
+#mainmenu > nav {
+	font-family: RetroShootype;
+	color: #ffffff;
+	filter: drop-shadow(3px 3px 0 #000000);
+	line-height: 50%;
+	margin: 0;
+	padding: 0.5em 0 0 0;
+	animation: subin 4s;
+	display: block;
+}
+#mainmenu > nav > a {
+	list-style: none;
+	display: inline-block;
+	margin: auto 0.5em;
+	color: #808080;
+	text-decoration: none;	
+}
+#mainmenu > nav > a:hover {
+	color: #fff;
+	filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.33));
+}
+#giftshop > nav {
+	display: block;
+	margin: 0;
+}
+#giftshop > nav > a {
+	margin: 1em;
+	padding: 0;
+	display: inline-block;
+	width: 25vh;
+	height: 25vh;
+}
+#giftshop > nav > a > img { height: 100%; opacity: 0.66; }
+#giftshop > nav > a:hover > img {
+	animation: hover 150ms;
+	opacity: 0.9;
+}	
+#get {
+	overflow: hidden;
+	animation: fadein 12s;
+}
+#get > video { filter: blur(8px) brightness(50%); }
+#watch { animation: fadein 8s; }
+@media only screen and (max-width: 1280px) {
+  .flex {
+	flex-direction: column;
+	min-width: 100vw;
+	padding: 0;
+	overflow-y: scroll;
+  }
+  video {
+	height: 100%;
+	width: auto;
+  }
+  .flexitem {
+	max-width: 75vw;
+	padding: 0.5em 0;
+  }
+  .flexitem > .logo {
+	width: 90%;
+	min-height: auto;
+  }
+  #mainmenu {
+	width: auto;
+	min-width: 75vw;
+	margin: 0 !important;
+	margin-top: 1em !important;
+  }
+  #get {
+	min-width: 75vw;
+	padding-top: 1em;
+  }
+  #get video {
+	height: auto !important;
+	width: 100% !important;
+  }
+  #watch {
+	width: 75vw;
+	margin: 0 !important;
+	padding-bottom: 1em;
+  }
+  a.goback, #mainmenu nav {
+	display: none;
+  }
+}
