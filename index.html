@@ -9,7 +9,7 @@
 		<video autoplay loop>
 			<source src="assets/starway.webm" type="video/webm">
 		</video> 
-		<div class="flex">
+		<div id="container" class="flex">
 			<div class="flexitem" id="mainmenu">
 				<h3 class="sublogo">A Kid MarsCat Game</h3>
 				<img class="logo" src="assets/logo.svg" alt="RetroShooti">
@@ -57,11 +57,8 @@
 			});
 			$(document).on('wheel', function(e)
 			{
-				if(e.type != 'wheel') { return; }
-				let delta = ((e.deltaY || -e.wheelDelta || e.detail) >> 10) || 1;
-				delta = delta * (-300);
-				document.documentElement.scrollLeft -= delta;    
-				document.body.scrollLeft -= delta;    
+				e = window.event || e;
+				$('#container').scrollLeft -= (Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail))) * 40); // Multiplied by 40
 				e.preventDefault();
 			});
 		});
