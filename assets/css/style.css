@@ -1,0 +1,111 @@
+@font-face {
+	font-family: RetroShootype;
+	src: url('../fonts/retroshootype/retroshootype.otf');
+}
+body, html {
+	overflow: hidden;
+	min-width: 100vw;
+	min-height: 100vh;
+}
+h1, h2, h3, h4, h5, h6, .dispface {
+	font-family: RetroShootype;
+	color: #ffffff;
+	filter: drop-shadow(3px 3px 0 #000000);
+	line-height: 50%;
+	margin: 0;
+	padding: 0;
+	font-weight: normal;
+}
+video {
+	position: absolute;
+	z-index: -1;
+	min-width: 100%;
+	min-height: 100%;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+#carousel {
+	overflow-x: auto;
+	overflow-y: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	min-width: 100vw;
+	min-height: 100vh !important;
+}
+#carousel > * {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	min-width: 50vw;
+	min-height: 50vh;
+	margin: 12.5vh 8.25vw;
+	margin-top: calc(12.5vh + 16px);
+	background-color: white;
+	filter: drop-shadow(8px 8px 0 #000000);
+	border-radius: 8px;
+	overflow: hidden;
+}
+#carousel > * > div {
+	height: min-content;
+}
+#carousel > *:first-child { margin-left: 25vw; }
+#carousel > *:last-child {
+	min-width: 12.5vw;
+	margin: 0;
+	visibility: hidden;
+}
+#home {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.85)), url(../img/cover.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+#home h3 {
+	margin: 0;
+	padding: 0;
+	padding-top: 24pt;
+	font-size: 24pt;
+}
+#home img {
+	height: 40vh;
+}
+#home nav {
+	margin: 4pt;
+	padding: 16pt 0;
+	font-size: xx-large;
+}
+#get video {
+	filter: blur(8px) brightness(50%);
+	min-width: 120%;
+	min-height: 120%;
+	left: 60%;
+	top: 60%;
+	transform: translate(-60%, -60%);
+}
+#get nav { margin-top: 1em; }
+#watch {
+	min-width: 41.66666666666667vw !important;
+	min-height: unset !important;
+}
+/* Go Back */
+a.goback {
+	font-family: RetroShootype;
+	color: #808080;
+	font-size: 40pt;
+	line-height: 24px;
+	text-decoration: none;
+	position: fixed;
+	bottom: 1em;
+	right: 1em;
+	opacity: 0;
+	animation: fadeout 1s;
+	z-index: 1em;
+}
+a.showup {
+	animation: fadein 1s !important;
+	opacity: 1;
+}
+a.showup:hover { color: #fff; }

@@ -1,69 +1,90 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>RetroShooti - A Kid MarsCat Game</title>
-		<link rel="stylesheet" type="text/css" href="assets/style.css">
-		<link rel="icon" type="image/png" href="favicon.png">
-	</head>
-	<body>
-		<video autoplay loop>
-			<source src="assets/starway.webm" type="video/webm">
-		</video> 
-		<div id="container" class="flex">
-			<div class="flexitem" id="mainmenu">
-				<h3 class="sublogo">A Kid MarsCat Game</h3>
-				<img class="logo" src="assets/logo.svg" alt="RetroShooti">
-				<nav>
-					<a href="#watch">Watch the trailer</a>
-					<a href="#get">Get the game</a>
-					<a href="/news">Continue</a>
+<head>
+	<title>RetroShooti - A Kid Marscat Game</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body>
+	<video class="background" autoplay loop>
+		<source src="assets/video/starway.webm" type="video/webm">
+	</video> 
+	<div id="container">
+		<div id="carousel">
+			<div id="home" class="container has-text-centered">
+				<div>
+					<h3>A Kid MarsCat Game</h3>
+					<img src="assets/img/logo.svg" alt="RetroShooti">
+				</div>
+				<nav class="level dispface">
+					<p class="level-item has-text-centered">
+						<a class="has-text-white" href="#watch">Watch trailer</a>
+					</p>
+					<p class="level-item has-text-centered">
+						<a class="has-text-white" href="#get">Get the game</a>
+					</p>
+					<p class="level-item has-text-centered">
+						<a class="has-text-white" href="news">Continue</a>
+					</p>
 				</nav>
 			</div>
-			<div class="flexitem" id="get">
+			<div id="get">
 				<video autoplay loop>
-					<source src="assets/chq.webm" type="video/webm">
+					<source src="assets/video/chq.webm" type="video/webm">
 				</video> 
-				<div id="giftshop">
-					<h1>Get the game!</h1>
-					<h4>Available on Steam and itch.io</h4>
-					<nav>
-						<a href="https://store.steampowered.com/app/1390290"><img src="assets/steam.svg" alt="Get RetroShooti on Steam"></a>
-						<a href="https://mmzgames.itch.io/retroshooti"><img src="assets/itchio.svg" alt="Get RetroShooti on itch.io"></a>
+				<div class="has-text-centered">
+					<div>
+						<p class="dispface has-text-white is-size-1">Get the game!</h1>
+						<p class="dispface has-text-white is-size-5">Available on Steam and itch.io</h4>
+					</div>
+					<nav class="level">
+						<a class="level-item has-text-centered" href="https://store.steampowered.com/app/1390290">
+							<figure class="image is-128x128">
+								<img src="assets/img/steam_fff.svg" alt="Get RetroShooti on Steam">
+							</figure>
+						</a>
+						<a class="level-item has-text-centered" href="https://mmzgames.itch.io/retroshooti">
+							<figure class="image is-128x128">
+								<img src="assets/img/itchio_fff.svg" alt="Get RetroShooti on itch.io">
+							</figure>
+						</a>
 						<!--<a href="#"><img src="" alt="Play RetroShooti on Newgrounds"></a>-->
 					</nav>
 				</div>
 			</div>
-			<iframe id="watch" width="560" height="315" src="https://www.youtube.com/embed/JZaXyMxf6_M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media" allowfullscreen></iframe>
+			<iframe id="watch" width="560" height="315" src="https://www.youtube.com/embed/JZaXyMxf6_M" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media" allowfullscreen></iframe>
+			<div>a</div>
 		</div>
-		<a class="goback" href="#mainmenu">Go Back</a>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script>
-		hash = "";
-		$(document).ready(function(){
-			$("body").on('scroll', function(e) {
-				if ((hash != "#mainmenu") && !$("a.goback").hasClass("showup")) { $("a.goback").addClass("showup"); }
-			});
-			$("a").on('click', function(e) {
-				if (this.hash !== "") {
-					e.preventDefault();
-					hash = this.hash;
-					if (hash == "#mainmenu") { $("a.goback").removeClass("showup"); }
-					else { $("a.goback").addClass("showup"); }
-					$('body, html').animate({ scrollLeft: $(hash).offset().left - $(window).height() / 2 }, 650, function(){
-						if (hash == "#mainmenu") { hash = ""; }
-						window.location.hash = hash;
-					});
-				}
-			});
-			$("body").bind("DOMMouseScroll mousewheel", function (event) {
-				var oEvent = event.originalEvent, 
-					direction = oEvent.detail ? oEvent.detail * -120 : oEvent.wheelDelta, 
-					position = $(this).scrollLeft();
-				position += direction > 0 ? -120 : 120;
-				$(this).scrollLeft(position);
-				event.preventDefault();
-			});
+	</div>
+	<a class="goback" href="#home">Go Back</a>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+	hash = "";
+	$(document).ready(function(){
+		$("#carousel").on('scroll', function(e) {
+			if ((hash != "#home") && !$("a.goback").hasClass("showup")) { $("a.goback").addClass("showup"); }
 		});
-		</script>
-	</body>
+		$("a").on('click', function(e) {
+			if (this.hash !== "") {
+				e.preventDefault();
+				hash = this.hash;
+				if (hash == "#home") { $("a.goback").removeClass("showup"); }
+				else { $("a.goback").addClass("showup"); }
+				$('#carousel').animate({ scrollLeft: $(hash).offset().left - $(window).height() / 2 }, 650, function(){
+					if (hash == "#home") { hash = ""; }
+					//window.location.hash = hash;
+				});
+			}
+		});
+		$("#carousel").bind("DOMMouseScroll mousewheel", function (event) {
+			var oEvent = event.originalEvent, 
+				direction = oEvent.detail ? oEvent.detail * -120 : oEvent.wheelDelta, 
+				position = $(this).scrollLeft();
+			position += direction > 0 ? -120 : 120;
+			$(this).scrollLeft(position);
+			event.preventDefault();
+		});
+	});
+	</script>
+</body>
 </html>
