@@ -109,3 +109,28 @@ a.showup {
 	opacity: 1;
 }
 a.showup:hover { color: #fff; }
+#ocontinue { display: none; }
+
+@media only screen and (max-width: 1280px) {
+  body {
+	max-height: 100vh;
+	overflow-x: hidden;
+	overflow-y: scroll;
+  }
+  #carousel {
+	flex-direction: column;
+	overflow-x: hidden;
+	overflow-y: scroll;
+  }
+  #carousel > * {
+	width: 90vw;
+	margin: 1em 5vw;
+  }
+  #carousel > *:first-child { margin-left: 5vw; }
+  #carousel > *:last-child, a.goback, #ogame, #otrailer { display: none; }
+  #ocontinue { display: inline; }
+  .background {
+	height: 100vh;
+	max-width: unset;
+  }
+}

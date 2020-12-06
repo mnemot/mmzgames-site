@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>RetroShooti - A Kid Marscat Game</title>
+	<title>Mesmerize Games Presents: RetroShooti - A Kid Marscat Game</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
@@ -17,14 +17,14 @@
 					<img src="assets/img/logo.svg" alt="RetroShooti">
 				</div>
 				<nav class="level dispface">
-					<p class="level-item has-text-centered">
+					<p id="otrailer" class="level-item has-text-centered">
 						<a class="has-text-white" href="#watch">Watch trailer</a>
 					</p>
-					<p class="level-item has-text-centered">
+					<p id="ogame" class="level-item has-text-centered">
 						<a class="has-text-white" href="#get">Get the game</a>
 					</p>
 					<p class="level-item has-text-centered">
-						<a class="has-text-white" href="news">Continue</a>
+						<a class="has-text-white" href="news">Continue<span id="ocontinue"> to our site</span></a>
 					</p>
 				</nav>
 			</div>
@@ -34,8 +34,8 @@
 				</video> 
 				<div class="has-text-centered">
 					<div>
-						<p class="dispface has-text-white is-size-1">Get the game!</h1>
-						<p class="dispface has-text-white is-size-5">Available on Steam and itch.io</h4>
+						<p class="dispface has-text-white is-size-1">Available on Steam and itch.io</h1>
+						<p class="dispface has-text-white is-size-5">You can play it in Newgrounds, too!</h4>
 					</div>
 					<nav class="level">
 						<a class="level-item has-text-centered" href="https://store.steampowered.com/app/1390290">
@@ -60,12 +60,14 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script>
 	hash = "";
+	do_scroll = true;
 	$(document).ready(function(){
+		$(window).resize(function() { do_scroll = ($(window).width() >= 1280); }).resize();
 		$("#carousel").on('scroll', function(e) {
-			if ((hash != "#home") && !$("a.goback").hasClass("showup")) { $("a.goback").addClass("showup"); }
+			if (do_scroll && (hash != "#home") && !$("a.goback").hasClass("showup")) { $("a.goback").addClass("showup"); }
 		});
 		$("a").on('click', function(e) {
-			if (this.hash !== "") {
+			if (do_scroll && (this.hash !== "")) {
 				e.preventDefault();
 				hash = this.hash;
 				if (hash == "#home") { $("a.goback").removeClass("showup"); }
@@ -77,12 +79,14 @@
 			}
 		});
 		$("#carousel").bind("DOMMouseScroll mousewheel", function (event) {
-			var oEvent = event.originalEvent, 
-				direction = oEvent.detail ? oEvent.detail * -120 : oEvent.wheelDelta, 
-				position = $(this).scrollLeft();
-			position += direction > 0 ? -120 : 120;
-			$(this).scrollLeft(position);
-			event.preventDefault();
+			if (do_scroll) {
+				var oEvent = event.originalEvent, 
+					direction = oEvent.detail ? oEvent.detail * -120 : oEvent.wheelDelta, 
+					position = $(this).scrollLeft();
+				position += direction > 0 ? -120 : 120;
+				$(this).scrollLeft(position);
+				event.preventDefault();
+			}
 		});
 	});
 	</script>
